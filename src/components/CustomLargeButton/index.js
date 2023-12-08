@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderRadius: 30,
     marginRight: 100,
-    maxWidth: 100,
   },
   buttonText: {
     color: Colors.primaryLight,
