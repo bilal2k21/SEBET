@@ -31,6 +31,9 @@ const Strings = {
   start: 'Start',
 
   // Dashboard
+  income: 'Income',
+  savings: 'Savings',
+  expenses: 'Expenses',
   transactions: 'TRANSACTIONS',
   reports: 'REPORTS',
   //MonthlyBudgetBadge

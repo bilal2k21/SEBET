@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
 
     width: wp(85),
     height: hp(20),
-    marginLeft: wp(5),
+    // marginLeft: wp(5),
     padding: wp(4),
   },
   // budgetCard: {
