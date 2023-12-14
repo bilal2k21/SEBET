@@ -11,17 +11,25 @@ import {
 import {Colors} from '../../../assets/colors';
 import {Size, hp, wp} from '../../../assets/dimensions';
 import {Strings} from '../../../assets/strings';
+import {Images} from '../../../assets/images';
 import CustomButton from '../../../components/CustomButton';
 import CustomTextInput from '../../../components/CustomTextInput';
-import {Images} from '../../../assets/images';
 
 export default function Login({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleSignIn = () => {
+    navigation.navigate('Dashboard');
+  };
+
   // const forgotPress = () => {
   //   navigation.navigate('ForgotPassword');
   // };
+
+  const handleSignup = () => {
+    navigation.navigate('Signup');
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -53,7 +61,7 @@ export default function Login({navigation}) {
             buttonTextStyle={{fontSize: Size(1.6)}}
             text={Strings.sign_In}
             size={'large'}
-            // onPress={handleLogin}
+            onPress={handleSignIn}
           />
           <View style={styles.horizontalView}>
             <TouchableOpacity
@@ -61,9 +69,7 @@ export default function Login({navigation}) {
             >
               <Text style={styles.forgot}>{Strings.forgotPassword}</Text>
             </TouchableOpacity>
-            <TouchableOpacity
-            // onPress={forgotPress}
-            >
+            <TouchableOpacity onPress={handleSignup}>
               <Text style={styles.signup}>{Strings.signup}</Text>
             </TouchableOpacity>
           </View>

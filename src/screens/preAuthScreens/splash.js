@@ -4,15 +4,15 @@ import {Images} from '../../assets/images';
 import {Size, hp, wp} from '../../assets/dimensions';
 import {Colors} from '../../assets/colors';
 import {Strings} from '../../assets/strings';
-// import {useNavigation} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
-export default function Splash() {
-  // const navigation = useNavigation();
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     navigation.navigate('Auth');
-  //   }, 3000);
-  // }, []);
+export const Splash = () => {
+  const navigation = useNavigation();
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.navigate('Auth');
+    }, 3000);
+  }, []);
 
   return (
     <SafeAreaView style={styles.mainContainer}>
@@ -20,7 +20,7 @@ export default function Splash() {
       <Text style={styles.txt}>{Strings.SEBET}</Text>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   mainContainer: {

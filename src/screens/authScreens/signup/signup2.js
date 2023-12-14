@@ -17,6 +17,10 @@ import CustomTextInput from '../../../components/CustomTextInput';
 import CustomHeader from '../../../components/CustomHeader';
 
 export default function Signup2({navigation}) {
+  const handleStart = () => {
+    navigation.navigate('Dashboard');
+  };
+
   const [zipCode, setZipCode] = useState('');
   const [city, setCity] = useState('');
   const [streetAddress, setStreetAddress] = useState('');
@@ -105,7 +109,7 @@ export default function Signup2({navigation}) {
             buttonTextStyle={{fontSize: Size(1.6)}}
             text={Strings.start}
             size={'large'}
-            // onPress={handleLogin}
+            onPress={handleStart}
           />
         </View>
       </ScrollView>

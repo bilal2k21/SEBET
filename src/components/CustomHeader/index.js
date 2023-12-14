@@ -4,10 +4,10 @@ import IIcon from 'react-native-vector-icons/Ionicons';
 import {Size, hp, wp} from '../../assets/dimensions';
 import {Colors} from '../../assets/colors';
 import LinearGradient from 'react-native-linear-gradient';
-// import {useNavigation} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 export default function CustomHeader(props) {
-  // const navigation = useNavigation();
+  const navigation = useNavigation();
   return (
     <View style={styles.headerContainer}>
       <LinearGradient
@@ -17,8 +17,7 @@ export default function CustomHeader(props) {
         style={styles.gradient}>
         <TouchableOpacity
           style={styles.redView}
-          // onPress={() => navigation.goBack()}
-        >
+          onPress={() => navigation.goBack()}>
           <IIcon
             color={Colors.primaryLight}
             name="arrow-back"

@@ -16,6 +16,9 @@ import {Images} from '../../../assets/images';
 import CustomHeader from '../../../components/CustomHeader';
 
 export default function Signup({navigation}) {
+  const handleSignup = () => {
+    navigation.navigate('Signup2');
+  };
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -83,7 +86,7 @@ export default function Signup({navigation}) {
             buttonTextStyle={{fontSize: Size(1.6)}}
             text={Strings.sign_Up}
             size={'large'}
-            // onPress={handleLogin}
+            onPress={handleSignup}
           />
         </View>
       </ScrollView>
