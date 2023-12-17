@@ -57,6 +57,36 @@ const Strings = {
   paid: '\nPAID ',
   debtCleared: ' OF YOUR DEBTS HAS BEEN CLEARED',
 
+  // MonthlyBudget
+  monthly_Budget: 'Monthly Budget',
+  year: 'YEAR:',
+  month: 'MONTH:',
+  addExpectedIncome: 'Add Expected Income',
+  expectedIncomeInMonth: 'EXPECTED INCOME\nOF THIS MONTH',
+  addExpense: 'Add Expense',
+  incomeSpent: 'INCOME SPENT IN\nBUDGET',
+  remainingAmount: 'REMAINING AMOUNT',
+
+  // Expense
+  expense: 'Expense',
+  searchList: 'Search list',
+  notAddedExpense:
+    'You have not added any expense yet. Data will be visible once you will add an expense',
+
+  // Profile
+  profile: 'Profile',
+  userName: 'User Name',
+  emailSample: 'email @email.com',
+  mobileNoSample: '+1 399 1234321',
+  addressSample: '132, My Street, Kingston, New York 12401',
+  editProfile: 'Edit Profile',
+  yourReferralCode: 'Your Referral code',
+  referralCodeSample: 'AA34X666',
+  referralAgreement: 'Referral Agreement',
+  myReferrals: 'My Referrals',
+  logout: 'Logout',
+
+  // Extra
   //Forgot Password
   forgot: 'Forgot Password',
   emailAddress: 'Email Address',

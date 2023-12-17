@@ -15,10 +15,12 @@ import {Images} from '../../../assets/images';
 import CustomButton from '../../../components/CustomButton';
 import CustomTextInput from '../../../components/CustomTextInput';
 import CustomHeader from '../../../components/CustomHeader';
+import {useNavigation} from '@react-navigation/native';
 
-export default function Signup2({navigation}) {
+const Signup2 = () => {
+  const navigation = useNavigation();
   const handleStart = () => {
-    navigation.navigate('Dashboard');
+    navigation.navigate('DrawerNavigation');
   };
 
   const [zipCode, setZipCode] = useState('');
@@ -115,7 +117,8 @@ export default function Signup2({navigation}) {
       </ScrollView>
     </SafeAreaView>
   );
-}
+};
+export default Signup2;
 
 const styles = StyleSheet.create({
   container: {

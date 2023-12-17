@@ -3,7 +3,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Splash} from '../screens/preAuthScreens/splash';
 import AuthStack from './authStack';
-import Dashboard from '../screens/postAuthScreens/dashboard';
+import DrawerNavigation from './drawerNavigation';
+import Expense from '../screens/postAuthScreens/expense';
+// import Dashboard from '../screens/postAuthScreens/dashboard';
 
 const Stack = createStackNavigator();
 
@@ -12,10 +14,12 @@ const Navigation = () => {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{headerShown: false, gestureEnabled: false}}
-        initialRouteName={'Splash'}>
+        initialRouteName={'Expense'}>
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Auth" component={AuthStack} />
-        <Stack.Screen name="Dashboard" component={Dashboard} />
+        {/* <Stack.Screen name="Dashboard" component={Dashboard} /> */}
+        {/* <Stack.Screen name="DrawerNavigation" component={DrawerNavigation} /> */}
+        <Stack.Screen name="Expense" component={Expense} />
       </Stack.Navigator>
     </NavigationContainer>
   );

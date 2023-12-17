@@ -1,10 +1,11 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import React from 'react';
 import IIcon from 'react-native-vector-icons/Ionicons';
 import {Size, hp, wp} from '../../assets/dimensions';
 import {Colors} from '../../assets/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
+import {Images} from '../../assets/images';
 
 export default function CustomHeader(props) {
   const navigation = useNavigation();
@@ -18,10 +19,15 @@ export default function CustomHeader(props) {
         <TouchableOpacity
           style={styles.redView}
           onPress={() => navigation.goBack()}>
-          <IIcon
+          {/* <IIcon
             color={Colors.primaryLight}
             name="arrow-back"
             size={Size(2.5)}
+          /> */}
+          <Image
+            source={Images.arrow}
+            style={styles.arrow}
+            resizeMode="contain"
           />
         </TouchableOpacity>
       </LinearGradient>
@@ -38,7 +44,8 @@ const styles = StyleSheet.create({
     width: wp(90),
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
+    // alignItems: 'flex-start',
+    alignSelf: 'center',
   },
   gradient: {
     borderRadius: 10,
@@ -51,6 +58,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  arrow: {
+    width: wp(5),
+    height: wp(5),
   },
   titleStyle: {
     fontSize: Size(2.6),

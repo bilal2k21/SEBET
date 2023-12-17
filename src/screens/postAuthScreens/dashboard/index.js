@@ -15,11 +15,16 @@ import MonthlyBudgetComponent from '../../../components/cardComponents/MonthlyBu
 import SinkingFundComponent from '../../../components/cardComponents/SinkingFundComponent';
 import DebtSnowballComponent from '../../../components/cardComponents/DebtSnowballComponent';
 import CustomLargeButton from '../../../components/CustomLargeButton';
-import Carousel from 'react-native-snap-carousel';
+// import Carousel from 'react-native-snap-carousel';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {LineChart} from 'react-native-chart-kit';
+// import {useNavigation} from '@react-navigation/native';
 
 const Dashboard = () => {
+  // const navigation = useNavigation();
+  // const drawerPress = () => {
+  //   navigation.navigate('DrawerNavigation');
+  // };
   // For horizontal cards
   const carouselRef = useRef(null);
   const data = [
@@ -98,7 +103,10 @@ const Dashboard = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity style={{width: wp(7)}}>
+      <TouchableOpacity
+        style={{width: wp(7)}}
+        // onPress={drawerPress}
+      >
         <Image
           source={Images.drawerIcon}
           style={styles.drawerIcon}
@@ -106,7 +114,7 @@ const Dashboard = () => {
         />
       </TouchableOpacity>
       <View style={styles.line} />
-      <View style={styles.carouselView}>
+      {/* <View style={styles.carouselView}>
         <Carousel
           ref={carouselRef}
           data={data}
@@ -122,7 +130,8 @@ const Dashboard = () => {
           containerCustomStyle={{overflow: 'visible'}} // Allow cards to overflow
           // inactiveSlideOpacity={0.1}
         />
-      </View>
+      </View> */}
+
       <View style={styles.graphParentView}>
         {/* Dropdown for year */}
         <View
@@ -197,6 +206,7 @@ const Dashboard = () => {
           <Text style={styles.labelsText}>{Strings.expenses}</Text>
         </View>
       </View>
+
       <CustomLargeButton text={Strings.transactions} />
       <CustomLargeButton text={Strings.reports} />
     </SafeAreaView>
