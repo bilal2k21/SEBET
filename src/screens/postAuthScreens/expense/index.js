@@ -16,10 +16,6 @@ import {Images} from '../../../assets/images';
 import IIcon from 'react-native-vector-icons/Ionicons';
 
 const Expense = () => {
-  //Variable for conditional rendering
-  let temp = '$5700';
-  // let temp = undefined;
-
   return (
     <SafeAreaView style={styles.container}>
       <CustomHeader title={Strings.expense} />

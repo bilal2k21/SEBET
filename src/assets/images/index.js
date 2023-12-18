@@ -10,4 +10,5 @@ export const Images = {
   search: require('./search.png'),
   arrow: require('./arrow.png'),
   forwardArrow: require('./forwardArrow.png'),
+  profile: require('./profile.png'),
 };
