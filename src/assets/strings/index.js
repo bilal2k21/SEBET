@@ -86,6 +86,38 @@ const Strings = {
   myReferrals: 'My Referrals',
   logout: 'Logout',
 
+  // Referrals
+  referrals: 'Referrals',
+  active: 'Active',
+  inactive: 'Inactive',
+  eMAIL: 'EMAIL',
+  joiningDate: 'JOINING DATE',
+  dateSample: '05-09-2022',
+
+  //Custom Categories
+  customCategories: 'Custom Categories',
+  addCategory: 'Add Category',
+  noDataFound: 'No data found',
+
+  // Add Expense
+  selectCategory: 'Select Category',
+  noSubCategory:
+    'There’s no sub category to this category. You need to add sub category in order breakdown the expense further',
+  addSubCategory: '+ add sub category',
+
+  // Debt Snowball
+  debt_Snowball: 'Debt Snowball',
+  enterDebtsHere:
+    'Enter your debts here.  Add something extra that you want to throw at these debts if you can and press the button to begin your debt snowball plan!',
+  extraIncome: 'Extra Income',
+  debtName: 'Debt\nName',
+  yourBalance: 'Your\nBalance',
+  interestRate: 'Interest\nRate',
+  minimumPayment: 'Minimum\nPayment',
+  yourPayment: 'Your\nPayment',
+  total: 'Total',
+  addADebt: 'Add a Debt',
+
   // Extra
   //Forgot Password
   forgot: 'Forgot Password',

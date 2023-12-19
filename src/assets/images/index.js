@@ -11,4 +11,5 @@ export const Images = {
   arrow: require('./arrow.png'),
   forwardArrow: require('./forwardArrow.png'),
   profile: require('./profile.png'),
+  oops: require('./oops.png'),
 };

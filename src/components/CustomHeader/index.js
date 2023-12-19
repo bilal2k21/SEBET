@@ -34,7 +34,7 @@ export default function CustomHeader(props) {
 
       <Text style={styles.titleStyle}>{props?.title}</Text>
 
-      <View style={styles.blankView} />
+      {/* <View style={styles.blankView} /> */}
     </View>
   );
 }
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     width: wp(90),
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     // alignItems: 'flex-start',
     alignSelf: 'center',
   },
@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: Colors.primaryLight,
     alignSelf: 'center',
+    marginLeft: wp(10),
   },
   blankView: {
     width: wp(10),
