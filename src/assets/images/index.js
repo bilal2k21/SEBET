@@ -12,4 +12,6 @@ export const Images = {
   forwardArrow: require('./forwardArrow.png'),
   profile: require('./profile.png'),
   oops: require('./oops.png'),
+  blackSquare: require('./blackSquare.png'),
+  blackTriangle: require('./blackTriangle.png'),
 };

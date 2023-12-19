@@ -4,7 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {Splash} from '../screens/preAuthScreens/splash';
 import AuthStack from './authStack';
 import DrawerNavigation from './drawerNavigation';
-import DebtSnowball from '../screens/postAuthScreens/debtSnowball';
+import MileageTracking from '../screens/postAuthScreens/mileageTracking';
 // import Dashboard from '../screens/postAuthScreens/dashboard';
 
 const Stack = createStackNavigator();
@@ -14,12 +14,12 @@ const Navigation = () => {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{headerShown: false, gestureEnabled: false}}
-        initialRouteName={'DebtSnowball'}>
+        initialRouteName={'MileageTracking'}>
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Auth" component={AuthStack} />
         {/* <Stack.Screen name="Dashboard" component={Dashboard} /> */}
         {/* <Stack.Screen name="DrawerNavigation" component={DrawerNavigation} /> */}
-        <Stack.Screen name="DebtSnowball" component={DebtSnowball} />
+        <Stack.Screen name="MileageTracking" component={MileageTracking} />
       </Stack.Navigator>
     </NavigationContainer>
   );

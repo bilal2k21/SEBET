@@ -4,7 +4,6 @@ import {Colors} from '../../../assets/colors';
 import CustomHeader from '../../../components/CustomHeader';
 import {Strings} from '../../../assets/strings';
 import {Size, hp, wp} from '../../../assets/dimensions';
-import IIcon from 'react-native-vector-icons/Ionicons';
 
 const Referrals = () => {
   const userDataArray = [
@@ -36,12 +35,12 @@ const Referrals = () => {
         </Text>
 
         <View style={styles.emailView}>
-          <Text style={styles.emailTitle}>Email</Text>
+          <Text style={styles.emailTitle}>{Strings.eMAIL}</Text>
           <Text style={styles.emailValue}>{item.email}</Text>
         </View>
 
         <View style={styles.emailView}>
-          <Text style={styles.emailTitle}>Joining Date</Text>
+          <Text style={styles.emailTitle}>{Strings.joiningDate}</Text>
           <Text style={styles.emailValue}>{item.joiningDate}</Text>
         </View>
       </View>

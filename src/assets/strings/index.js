@@ -34,7 +34,7 @@ const Strings = {
   income: 'Income',
   savings: 'Savings',
   expenses: 'Expenses',
-  transactions: 'TRANSACTIONS',
+  tRANSACTIONS: 'TRANSACTIONS',
   reports: 'REPORTS',
   //MonthlyBudgetBadge
   jan2022: 'JAN\n2022',
@@ -118,20 +118,23 @@ const Strings = {
   total: 'Total',
   addADebt: 'Add a Debt',
 
-  // Extra
-  //Forgot Password
-  forgot: 'Forgot Password',
-  emailAddress: 'Email Address',
-  continue: 'Continue',
+  //Transactions
+  transactions: 'Transactions',
+  amount: 'Amount',
+  date: 'Date',
+  type: 'Type',
 
-  //OTP
-  enterCode: 'Enter 4 Digits Code',
-  codeDetails: 'Enter the 4 digits code that you received on your email',
-  verify: 'Verify',
-
-  // Reset Password
-  resetPassword: 'Reset Password',
-  enterPassword: 'Enter password',
+  // Mileage Tracking
+  mileageTracking: 'Mileage Tracking',
+  september: 'SEPTEMBER',
+  totalMileage: 'Total\nMileage',
+  todayMileage: "Today's\nMileage",
+  lastMileage: 'Last\nMileage',
+  startMileage: 'Start your mileage tracking',
+  startTime: 'Start time',
+  endTime: 'End time',
+  timeSample: '9:00 AM',
+  dateSample2: 'SEP 25, 2021 ',
 };
 
 export {Strings};
