@@ -208,7 +208,7 @@ const Dashboard = () => {
       </View>
 
       <CustomLargeButton text={Strings.tRANSACTIONS} />
-      <CustomLargeButton text={Strings.reports} />
+      <CustomLargeButton text={Strings.rEPORTS} />
     </SafeAreaView>
   );
 };

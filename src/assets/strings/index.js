@@ -35,7 +35,7 @@ const Strings = {
   savings: 'Savings',
   expenses: 'Expenses',
   tRANSACTIONS: 'TRANSACTIONS',
-  reports: 'REPORTS',
+  rEPORTS: 'REPORTS',
   //MonthlyBudgetBadge
   jan2022: 'JAN\n2022',
   monthlyBudget: 'MONTHLY\nBUDGET',
@@ -135,6 +135,17 @@ const Strings = {
   endTime: 'End time',
   timeSample: '9:00 AM',
   dateSample2: 'SEP 25, 2021 ',
+
+  // Reports
+  reports: 'Reports',
+  emailForReports:
+    'Enter an email address where you want automated reports to go.  Yours, or your accountant’s; it’s your choice.',
+  emailAddress: 'Email Address',
+  chooseReportsPeriod:
+    'Choose how often your reports are sent, SEBET will wait for two weeks after a period ends, then reports are automatically generated and emailed.',
+  quarterly: 'QUARTERLY',
+  annually: 'ANNUALLY',
+  save: 'Save',
 };
 
 export {Strings};

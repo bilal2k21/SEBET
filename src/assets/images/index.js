@@ -14,4 +14,6 @@ export const Images = {
   oops: require('./oops.png'),
   blackSquare: require('./blackSquare.png'),
   blackTriangle: require('./blackTriangle.png'),
+  reports: require('./reports.png'),
+  tick: require('./tick.png'),
 };
