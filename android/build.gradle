@@ -17,5 +17,29 @@ buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle")
         classpath("com.facebook.react:react-native-gradle-plugin")
+
+        //Line added for Firebase
+        classpath 'com.google.gms:google-services:4.4.0'
+    }
+
+
+    // Following lines added for Overriding Native SDK Versions
+    project.ext {
+        set('react-native', [
+            versions: [
+                // Overriding Build/Android SDK Versions
+                android : [
+                    minSdk    : 19,
+                    targetSdk : 33,
+                    compileSdk: 33,
+                ],
+
+                // Overriding Library SDK Versions
+                firebase: [
+                    // Override Firebase SDK Version
+                    bom           : "32.7.0"
+                ],
+            ],
+        ])
     }
 }

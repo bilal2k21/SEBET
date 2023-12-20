@@ -62,10 +62,18 @@ const Strings = {
   year: 'YEAR:',
   month: 'MONTH:',
   addExpectedIncome: 'Add Expected Income',
+  updateIncome: 'Update Income',
   expectedIncomeInMonth: 'EXPECTED INCOME\nOF THIS MONTH',
   addExpense: 'Add Expense',
   incomeSpent: 'INCOME SPENT IN\nBUDGET',
   remainingAmount: 'REMAINING AMOUNT',
+  convenience: 'Convenience',
+  cable: 'Cable',
+  internetAccess: 'Internet Access',
+  newspaper: 'Newspaper',
+  cellPhone: 'Cell Phone',
+  beeper: 'Beeper',
+  addItem: '+add item',
 
   // Expense
   expense: 'Expense',

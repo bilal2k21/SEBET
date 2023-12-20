@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "229851196377",
+    "project_id": "sebet-2k23",
+    "storage_bucket": "sebet-2k23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229851196377:android:1f1d3b5cb7850347d8c7c8",
+        "android_client_info": {
+          "package_name": "com.sebet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfbkQhdPZ2PRFeuS4o70pNI57-kRejuUg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

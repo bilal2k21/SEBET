@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   Image,
   TouchableOpacity,
+  FlatList,
 } from 'react-native';
 import React, {useState} from 'react';
 import {Colors} from '../../../assets/colors';
@@ -16,6 +17,10 @@ import {Images} from '../../../assets/images';
 import {Bar} from 'react-native-progress';
 
 const MonthlyBudget = () => {
+  //Variable for conditional rendering
+  let temp = '$5700';
+  // let temp = undefined;
+
   // For year pick
   const [year, setYear] = useState('');
   const [open, setOpen] = useState(false);
@@ -46,16 +51,65 @@ const MonthlyBudget = () => {
     {label: 'DECEMBER', value: 'DECEMBER'},
   ]);
 
-  //Variable for conditional rendering
-  let temp = '$5700';
-  // let temp = undefined;
+  // Data array for expenses
+  const data = [
+    {
+      id: '1',
+      category: Strings.convenience,
+      items: [
+        {name: Strings.cable, value: '$150'},
+        {name: Strings.internetAccess, value: '$200'},
+        {name: Strings.newspaper, value: '$100'},
+        {name: Strings.cellPhone, value: '$500'},
+        {name: Strings.beeper, value: '$50'},
+      ],
+    },
+    {
+      id: '2',
+      category: Strings.convenience,
+      items: [
+        {name: Strings.cable, value: '$150'},
+        {name: Strings.internetAccess, value: '$200'},
+        {name: Strings.newspaper, value: '$100'},
+        // {name: Strings.cellPhone, value: '$500'},
+        // {name: Strings.beeper, value: '$50'},
+      ],
+    },
+  ];
+
+  const ExpenseItem = ({category, items}) => (
+    <View style={styles.expenseMainView}>
+      <View style={styles.verticalView} />
+
+      <View style={styles.expenseDetails}>
+        <Text style={styles.categoryTitle}>{category}</Text>
+
+        {items.map((item, index) => (
+          <View key={index}>
+            <View style={styles.subCategoryView}>
+              <Text style={styles.subCategoryName}>{item.name}</Text>
+              <Text style={styles.subCategoryValue}>{item.value}</Text>
+            </View>
+            {index < items.length - 1 && <View style={styles.separator} />}
+          </View>
+        ))}
+
+        <TouchableOpacity style={styles.addItemView}>
+          <Text style={styles.addItem}>{Strings.addItem}</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
 
   return (
     <SafeAreaView style={styles.container}>
       <CustomHeader title={Strings.monthly_Budget} />
+
       <View style={styles.line} />
+
       <View style={styles.upperView}>
         <Text style={styles.year}>{Strings.year}</Text>
+
         {/* Dropdown for year */}
         <View
           style={{
@@ -63,7 +117,6 @@ const MonthlyBudget = () => {
           }}>
           <DropDownPicker
             style={{
-              //   height: hp(6),
               backgroundColor: Colors.primaryLight,
               borderWidth: 0,
               borderRadius: 30,
@@ -81,15 +134,12 @@ const MonthlyBudget = () => {
               fontWeight: '600',
               paddingLeft: wp(2),
             }}
-            // arrowIconStyle={{tintColor: Colors.primaryDark, marginRight: 10}}
             listItemContainerStyle={{
               backgroundColor: Colors.primaryLight,
             }}
             tickIconStyle={{
               tintColor: Colors.primaryDark,
             }}
-            // disableBorderRadius={false}
-            // zIndex={2000}
             maxHeight={160}
           />
         </View>
@@ -102,7 +152,6 @@ const MonthlyBudget = () => {
           }}>
           <DropDownPicker
             style={{
-              //   height: hp(6),
               backgroundColor: Colors.primaryLight,
               borderWidth: 0,
               borderRadius: 30,
@@ -120,19 +169,17 @@ const MonthlyBudget = () => {
               fontWeight: '600',
               paddingLeft: wp(2),
             }}
-            // arrowIconStyle={{tintColor: Colors.primaryDark, marginRight: 10}}
             listItemContainerStyle={{
               backgroundColor: Colors.primaryLight,
             }}
             tickIconStyle={{
               tintColor: Colors.primaryDark,
             }}
-            // disableBorderRadius={false}
-            // zIndex={2000}
             maxHeight={160}
           />
         </View>
       </View>
+
       <View style={styles.greenView}>
         <TouchableOpacity style={styles.greenButton}>
           <Image
@@ -140,9 +187,12 @@ const MonthlyBudget = () => {
             style={styles.pencil}
             resizeMode="contain"
           />
-          <Text style={styles.greenText}>{Strings.addExpectedIncome}</Text>
+          <Text style={styles.greenText}>
+            {temp ? Strings.updateIncome : Strings.addExpectedIncome}
+          </Text>
         </TouchableOpacity>
       </View>
+
       <View style={styles.middleView}>
         <View style={styles.expectedIncomeView}>
           <Text style={{color: temp ? Colors.primaryLight : Colors.grayText}}>
@@ -166,7 +216,7 @@ const MonthlyBudget = () => {
         </View>
         <Bar
           height={15}
-          width={280}
+          width={300}
           progress={temp ? 0.61 : 0}
           borderWidth={0}
           borderRadius={10}
@@ -184,9 +234,30 @@ const MonthlyBudget = () => {
           <Text style={styles.remainingAmountValue}>{temp ? '$2223' : ''}</Text>
         </View>
       </View>
-      <TouchableOpacity style={styles.addExpenseButton}>
+
+      {/* Render the FlatList based on the 'temp' value */}
+      {temp ? (
+        <FlatList
+          data={data}
+          keyExtractor={item => item.id}
+          renderItem={({item}) => <ExpenseItem {...item} />}
+        />
+      ) : (
+        <TouchableOpacity style={styles.addExpenseButton}>
+          <Text style={styles.addExpenseText}>{Strings.addExpense}</Text>
+        </TouchableOpacity>
+      )}
+
+      {/* Round Button */}
+      {/* <TouchableOpacity style={styles.addExpenseButton}>
         <Text style={styles.addExpenseText}>{Strings.addExpense}</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
+
+      {/* <FlatList
+        data={data}
+        keyExtractor={item => item.id}
+        renderItem={({item}) => <ExpenseItem {...item} />}
+      /> */}
     </SafeAreaView>
   );
 };
@@ -218,10 +289,9 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   greenView: {
-    width: wp(55),
     alignSelf: 'flex-end',
     marginVertical: hp(3),
-    marginRight: wp(2.5),
+    marginRight: wp(5),
   },
   greenButton: {
     flexDirection: 'row',
@@ -294,5 +364,60 @@ const styles = StyleSheet.create({
     fontSize: Size(1.7),
     textAlign: 'center',
     paddingHorizontal: wp(1),
+  },
+  expenseMainView: {
+    width: wp(90),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignSelf: 'center',
+    backgroundColor: Colors.darkGrey,
+    borderWidth: 1,
+    borderRadius: 20,
+    marginVertical: hp(1.5),
+    paddingVertical: hp(1),
+  },
+  verticalView: {
+    width: wp(3),
+    height: '60%',
+    backgroundColor: Colors.green1,
+    borderRadius: 5,
+    alignSelf: 'center',
+  },
+  expenseDetails: {
+    flex: 1,
+    paddingHorizontal: wp(2.5),
+  },
+  categoryTitle: {
+    color: Colors.primaryLight,
+    fontSize: Size(2.7),
+    fontWeight: '700',
+    paddingBottom: wp(2),
+  },
+  subCategoryView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  subCategoryName: {
+    fontWeight: '300',
+    color: Colors.primaryLight,
+  },
+  subCategoryValue: {
+    fontWeight: '500',
+    color: Colors.primaryLight,
+  },
+  separator: {
+    width: '100%',
+    borderTopWidth: 1,
+    borderColor: Colors.primaryDark,
+    marginVertical: hp(1),
+  },
+  addItemView: {
+    width: wp(20),
+    marginTop: hp(1),
+  },
+  addItem: {
+    fontWeight: '500',
+    color: Colors.green1,
   },
 });
