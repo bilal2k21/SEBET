@@ -16,4 +16,5 @@ export const Images = {
   blackTriangle: require('./blackTriangle.png'),
   reports: require('./reports.png'),
   tick: require('./tick.png'),
+  greaterThan: require('./greaterThan.png'),
 };

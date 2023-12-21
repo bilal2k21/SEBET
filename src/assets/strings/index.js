@@ -118,6 +118,10 @@ const Strings = {
   enterDebtsHere:
     'Enter your debts here.  Add something extra that you want to throw at these debts if you can and press the button to begin your debt snowball plan!',
   extraIncome: 'Extra Income',
+  extraAmountToDebt: 'Extra amount will automatically go to the smallest debt',
+  citiBank: 'Citibank',
+  dollarBankCard: 'Dollar Bank card',
+  gbmc: 'GBMC',
   debtName: 'Debt\nName',
   yourBalance: 'Your\nBalance',
   interestRate: 'Interest\nRate',
@@ -125,6 +129,8 @@ const Strings = {
   yourPayment: 'Your\nPayment',
   total: 'Total',
   addADebt: 'Add a Debt',
+  cITIBANK: 'CITIBANK',
+  carLoan: 'CAR LOAN',
 
   //Transactions
   transactions: 'Transactions',
