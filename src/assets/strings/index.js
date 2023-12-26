@@ -160,6 +160,9 @@ const Strings = {
   quarterly: 'QUARTERLY',
   annually: 'ANNUALLY',
   save: 'Save',
+
+  // Debt Details
+  dEBT: 'DEBT',
 };
 
 export {Strings};

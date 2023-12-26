@@ -6,6 +6,7 @@ import {
   View,
   Image,
   ScrollView,
+  ToastAndroid,
 } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {Colors} from '../../../assets/colors';
@@ -16,11 +17,40 @@ import CustomButton from '../../../components/CustomButton';
 import CustomTextInput from '../../../components/CustomTextInput';
 import CustomHeader from '../../../components/CustomHeader';
 import {useNavigation} from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 const Signup2 = () => {
   const navigation = useNavigation();
-  const handleStart = () => {
-    navigation.navigate('DrawerNavigation');
+
+  const handleStart = async () => {
+    // Check if input fields are empty
+    if (
+      stateName === '' ||
+      zipCode === '' ||
+      city === '' ||
+      streetAddress === ''
+    ) {
+      ToastAndroid.show('Fill the empty fields', ToastAndroid.SHORT);
+      return;
+    }
+
+    try {
+      //Save data to firestore
+      await firestore().collection('users').doc(auth().currentUser.uid).update({
+        stateName: stateName,
+        zipCode: zipCode,
+        city: city,
+        streetAddress: streetAddress,
+        referralCode: referralCode,
+      });
+      console.log('Data inserted successfully');
+      ToastAndroid.show('Data inserted successfully', ToastAndroid.SHORT);
+
+      navigation.navigate('Dashboard');
+    } catch (error) {
+      console.log('Error', error);
+    }
   };
 
   const [zipCode, setZipCode] = useState('');

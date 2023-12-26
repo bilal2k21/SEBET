@@ -19,12 +19,33 @@ import CustomLargeButton from '../../../components/CustomLargeButton';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {LineChart} from 'react-native-chart-kit';
 // import {useNavigation} from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 const Dashboard = () => {
+  const [abcValue, setAbcValue] = useState(''); // State to store the value of abc
+  const handlePress = async () => {
+    try {
+      //Save data to firestore
+      const abc = await firestore()
+        .collection('users')
+        .doc(auth().currentUser.uid)
+        .get();
+
+      const fName = abc._data.firstName;
+      console.log('First name: ', fName);
+
+      // Set the value of abc to the state
+      setAbcValue(fName);
+    } catch (error) {
+      console.log('Error', error);
+    }
+  };
   // const navigation = useNavigation();
   // const drawerPress = () => {
   //   navigation.navigate('DrawerNavigation');
   // };
+
   // For horizontal cards
   const carouselRef = useRef(null);
   const data = [
@@ -106,13 +127,14 @@ const Dashboard = () => {
       <TouchableOpacity
         style={{width: wp(7)}}
         // onPress={drawerPress}
-      >
+        onPress={handlePress}>
         <Image
           source={Images.drawerIcon}
           style={styles.drawerIcon}
           resizeMode="contain"
         />
       </TouchableOpacity>
+      {abcValue !== '' && <Text style={{color: 'red'}}>{abcValue}</Text>}
       <View style={styles.line} />
       {/* <View style={styles.carouselView}>
         <Carousel

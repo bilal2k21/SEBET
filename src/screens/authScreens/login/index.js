@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity,
   KeyboardAvoidingView,
+  ToastAndroid,
 } from 'react-native';
 import {Colors} from '../../../assets/colors';
 import {Size, hp, wp} from '../../../assets/dimensions';
@@ -14,13 +15,43 @@ import {Strings} from '../../../assets/strings';
 import {Images} from '../../../assets/images';
 import CustomButton from '../../../components/CustomButton';
 import CustomTextInput from '../../../components/CustomTextInput';
+import auth from '@react-native-firebase/auth';
+import {LogBox} from 'react-native';
 
 export default function Login({navigation}) {
+  LogBox.ignoreAllLogs();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSignIn = () => {
-    navigation.navigate('Dashboard');
+    // Check if passwords is empty
+    if (email === '' || password === '') {
+      ToastAndroid.show(
+        'Email and password cannot be empty',
+        ToastAndroid.SHORT,
+      );
+      return;
+    }
+
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log('User account loggedin!');
+        ToastAndroid.show('Logged in successfully', ToastAndroid.SHORT);
+        navigation.navigate('Dashboard');
+      })
+      .catch(error => {
+        if (error.code === 'auth/invalid-email') {
+          ToastAndroid.show('Invalid email', ToastAndroid.SHORT);
+          console.log('That email address is invalid!');
+        }
+        if (error.code === 'auth/invalid-credential') {
+          ToastAndroid.show('Invalid credential', ToastAndroid.SHORT);
+          console.log('Invalid credential');
+        }
+        console.error(error);
+      });
   };
 
   // const forgotPress = () => {

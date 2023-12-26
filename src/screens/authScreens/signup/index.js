@@ -6,6 +6,7 @@ import {
   View,
   Image,
   ScrollView,
+  ToastAndroid,
 } from 'react-native';
 import {Colors} from '../../../assets/colors';
 import {Size, hp, wp} from '../../../assets/dimensions';
@@ -14,10 +15,66 @@ import CustomButton from '../../../components/CustomButton';
 import CustomTextInput from '../../../components/CustomTextInput';
 import {Images} from '../../../assets/images';
 import CustomHeader from '../../../components/CustomHeader';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+import {LogBox} from 'react-native';
+LogBox.ignoreAllLogs();
 
 export default function Signup({navigation}) {
-  const handleSignup = () => {
-    navigation.navigate('Signup2');
+  const handleSignup = async () => {
+    // Check if input fields are empty
+    if (
+      firstName === '' ||
+      lastName === '' ||
+      email === '' ||
+      phone === '' ||
+      password === '' ||
+      confirmPassword === ''
+    ) {
+      ToastAndroid.show('Fill the empty fields', ToastAndroid.SHORT);
+      return;
+    }
+
+    // Check if passwords match
+    if (password !== confirmPassword) {
+      ToastAndroid.show(
+        'Mismatch password & confirm password',
+        ToastAndroid.SHORT,
+      );
+      return;
+    }
+
+    // Continue with user registration
+    try {
+      await auth().createUserWithEmailAndPassword(email, password);
+      console.log('Account created successfully');
+      ToastAndroid.show('Account created successfully', ToastAndroid.SHORT);
+
+      //Save data to firestore
+      await firestore().collection('users').doc(auth().currentUser.uid).set({
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        phone: phone,
+      });
+      console.log('Data inserted successfully');
+      ToastAndroid.show('Data inserted successfully', ToastAndroid.LONG);
+
+      navigation.navigate('Signup2');
+    } catch (error) {
+      if (error.code === 'auth/email-already-in-use') {
+        ToastAndroid.show('Email already used', ToastAndroid.SHORT);
+        console.log('That email address is already in use!');
+      } else if (error.code === 'auth/invalid-email') {
+        ToastAndroid.show('Invalid email', ToastAndroid.SHORT);
+        console.log('That email address is invalid!');
+      } else if (error.code === 'auth/weak-password') {
+        ToastAndroid.show('Weak password', ToastAndroid.SHORT);
+        console.log('The password is weak!');
+      }
+
+      console.error('Error during user registration:', error);
+    }
   };
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -87,6 +144,7 @@ export default function Signup({navigation}) {
             text={Strings.sign_Up}
             size={'large'}
             onPress={handleSignup}
+            // onPress={handleFirestore}
           />
         </View>
       </ScrollView>
