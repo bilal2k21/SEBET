@@ -3,8 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Splash} from '../screens/preAuthScreens/splash';
 import AuthStack from './authStack';
-import DrawerNavigation from './drawerNavigation';
-import Dashboard from '../screens/postAuthScreens/dashboard';
+import SecondStack from './secondStack';
 
 const Stack = createStackNavigator();
 
@@ -16,8 +15,7 @@ const Navigation = () => {
         initialRouteName={'Splash'}>
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Auth" component={AuthStack} />
-        <Stack.Screen name="Dashboard" component={Dashboard} />
-        {/* <Stack.Screen name="DrawerNavigation" component={DrawerNavigation} /> */}
+        <Stack.Screen name="SecondStack" component={SecondStack} />
       </Stack.Navigator>
     </NavigationContainer>
   );

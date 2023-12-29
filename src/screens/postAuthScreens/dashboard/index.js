@@ -15,36 +15,14 @@ import MonthlyBudgetComponent from '../../../components/cardComponents/MonthlyBu
 import SinkingFundComponent from '../../../components/cardComponents/SinkingFundComponent';
 import DebtSnowballComponent from '../../../components/cardComponents/DebtSnowballComponent';
 import CustomLargeButton from '../../../components/CustomLargeButton';
-// import Carousel from 'react-native-snap-carousel';
+import Carousel from 'react-native-snap-carousel';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {LineChart} from 'react-native-chart-kit';
-// import {useNavigation} from '@react-navigation/native';
-import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
+import {useNavigation} from '@react-navigation/native';
 
 const Dashboard = () => {
-  const [abcValue, setAbcValue] = useState(''); // State to store the value of abc
-  const handlePress = async () => {
-    try {
-      //Save data to firestore
-      const abc = await firestore()
-        .collection('users')
-        .doc(auth().currentUser.uid)
-        .get();
-
-      const fName = abc._data.firstName;
-      console.log('First name: ', fName);
-
-      // Set the value of abc to the state
-      setAbcValue(fName);
-    } catch (error) {
-      console.log('Error', error);
-    }
-  };
-  // const navigation = useNavigation();
-  // const drawerPress = () => {
-  //   navigation.navigate('DrawerNavigation');
-  // };
+  const navigation = useNavigation();
+  const drawerNavigation = useNavigation();
 
   // For horizontal cards
   const carouselRef = useRef(null);
@@ -93,7 +71,7 @@ const Dashboard = () => {
       },
       {
         data: [18, 13, 18, 25, 22, 12, 25, 55, 75, 65, 73, 71], // Savings data
-        color: () => `rgba(1, 170, 69, 1)`, // Green color for Income
+        color: () => `rgba(1, 170, 69, 1)`, // Green color for savings
         strokeWidth: 3.75,
       },
       {
@@ -126,17 +104,15 @@ const Dashboard = () => {
     <SafeAreaView style={styles.container}>
       <TouchableOpacity
         style={{width: wp(7)}}
-        // onPress={drawerPress}
-        onPress={handlePress}>
+        onPress={() => drawerNavigation.openDrawer()}>
         <Image
           source={Images.drawerIcon}
           style={styles.drawerIcon}
           resizeMode="contain"
         />
       </TouchableOpacity>
-      {abcValue !== '' && <Text style={{color: 'red'}}>{abcValue}</Text>}
       <View style={styles.line} />
-      {/* <View style={styles.carouselView}>
+      <View style={styles.carouselView}>
         <Carousel
           ref={carouselRef}
           data={data}
@@ -152,7 +128,7 @@ const Dashboard = () => {
           containerCustomStyle={{overflow: 'visible'}} // Allow cards to overflow
           // inactiveSlideOpacity={0.1}
         />
-      </View> */}
+      </View>
 
       <View style={styles.graphParentView}>
         {/* Dropdown for year */}

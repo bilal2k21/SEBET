@@ -39,7 +39,7 @@ export default function Login({navigation}) {
       .then(() => {
         console.log('User account loggedin!');
         ToastAndroid.show('Logged in successfully', ToastAndroid.SHORT);
-        navigation.navigate('Dashboard');
+        navigation.replace('SecondStack');
       })
       .catch(error => {
         if (error.code === 'auth/invalid-email') {

@@ -17,4 +17,11 @@ export const Images = {
   reports: require('./reports.png'),
   tick: require('./tick.png'),
   greaterThan: require('./greaterThan.png'),
+  calendar: require('./calendar.png'),
+  category: require('./category.png'),
+  chart: require('./chart.png'),
+  twoCircles: require('./twoCircles.png'),
+  wallet: require('./wallet.png'),
+  swapRed: require('./swapRed.png'),
+  reportRed: require('./reportRed.png'),
 };

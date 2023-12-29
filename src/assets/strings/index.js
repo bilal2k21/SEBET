@@ -163,6 +163,14 @@ const Strings = {
 
   // Debt Details
   dEBT: 'DEBT',
+
+  // Drawer
+  viewProfile: 'View Profile',
+  dashboard: 'Dashboard',
+  weeklySchedule: 'Weekly Schedule',
+  uploadCSVFile: 'Upload CSV File\nof your bank transactions',
+  hello_: 'Hello!',
+  sinking_Funds: 'Sinking Funds',
 };
 
 export {Strings};
